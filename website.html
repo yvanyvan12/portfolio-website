@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yvan Niyonshuti — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* -------- Base / Theme -------- */
+    :root{
+      --bg:#0c0c0c;
+      --panel:#121212;
+      --muted:#a3a3a3;
+      --text:#f2f2f2;
+      --accent:#f0c36a;
+      --accent-2:#3b82f6;
+      --success:#16a34a;
+      --danger:#ef4444;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text);}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin-inline:auto; padding-inline:24px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; border:1px solid #2a2a2a; background:#1a1a1a; color:#fff; padding:.8rem 1.1rem; border-radius:999px; font-weight:600; transition:.25s ease}
+    .btn:hover{transform:translateY(-1px); background:#222}
+    .btn.primary{background:var(--accent); color:#111; border-color:transparent}
+    .btn.primary:hover{filter:brightness(1.05)}
+
+    /* -------- Header -------- */
+    .site-header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px); background:rgba(12,12,12,.7); border-bottom:1px solid #1f1f1f}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.6px}
+    .brand .logo{width:auto; height:auto; display:grid; place-items:center; font-size:1.1rem; color:var(--accent)}
+    .menu{display:flex; gap:28px; align-items:center}
+    .menu a{color:var(--muted); font-weight:600}
+    .menu a:hover, .menu a.active{color:#fff}
+
+    /* -------- Hero -------- */
+    .hero{padding-block:56px 40px;}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .9fr; gap:28px}
+    .hero-card{background:radial-gradient(1200px 300px at -10% -40%, rgba(255,255,255,.06), transparent), var(--panel); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+    .hero-eyebrow{color:var(--muted); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem}
+    .hero-title{font-size: clamp(2.3rem, 6vw, 4rem); line-height:1.05; font-weight:900; letter-spacing:.5px; margin:.25em 0 .2em}
+    .hero-title .sub{display:block; color:#9ad0ff; font-weight:800; opacity:.9}
+    .hero img.portrait{width:100%; height:360px; object-fit:cover; border-radius:16px; filter:grayscale(40%);}
+    .swatch{position:absolute; right:18px; top:18px; display:flex; flex-direction:column; gap:8px}
+    .swatch span{width:20px; height:20px; border-radius:4px}
+    .swatch .s1{background:#ffffff22}
+    .swatch .s2{background:#3b82f6}
+    .swatch .s3{background:#f0c36a}
+
+    /* -------- Sections -------- */
+    section{padding-block:64px}
+    .section-title{font-size: clamp(1.4rem, 3.5vw, 2.2rem); margin:0 0 22px; letter-spacing:.5px}
+    p.muted{color:var(--muted)}
+
+    /* About */
+    .about{display:grid; grid-template-columns:.95fr 1.1fr; gap:32px}
+    .about .photo{border-radius:var(--radius); overflow:hidden; background:#0f0f0f; border:1px solid #202020}
+    .about .panel{background:var(--panel); border:1px solid #202020; border-radius:var(--radius); padding:26px}
+    .about .meta{display:flex; gap:22px; margin:.4rem 0 1rem}
+    .chip{padding:.35rem .7rem; background:#1b1b1b; border:1px solid #2a2a2a; color:#cfcfcf; border-radius:999px; font-size:.85rem; font-weight:600}
+
+    /* Services */
+    .services{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .card{background:var(--panel); border:1px solid #202020; border-radius:var(--radius); padding:22px; transition:.25s ease; box-shadow:var(--shadow)}
+    .card:hover{transform:translateY(-4px)}
+    .card .icon{width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:#1d1d1d; margin-bottom:10px}
+    .card h3{margin:.1rem 0 .4rem}
+    .card p{color:var(--muted)}
+
+    /* Works */
+    .works-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .work{background:#0f0f0f; border:1px solid #202020; border-radius:var(--radius); overflow:hidden}
+    .work .cap{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-top:1px solid #1f1f1f}
+    .work .cap a{font-weight:600; color:var(--accent)}
+
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns:1fr 1.1fr; gap:22px}
+    .contact-item{background:var(--panel); border:1px solid #202020; border-radius:var(--radius); padding:22px}
+    .socials{display:flex; gap:10px; margin-top:8px}
+    .socials a{width:34px; height:34px; display:grid; place-items:center; border-radius:999px; background:#1c1c1c; border:1px solid #2a2a2a}
+
+    form .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    input, textarea{width:100%; padding:14px 14px; border-radius:12px; border:1px solid #2a2a2a; background:#111; color:#eaeaea; font:inherit}
+    textarea{min-height:160px; resize:vertical}
+
+    /* Footer */
+    footer{padding:26px 0 40px; color:#9b9b9b; border-top:1px solid #1b1b1b; text-align:center}
+
+    /* -------- Responsive -------- */
+    @media (max-width: 1024px){
+      .hero-grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .works-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .menu{display:none}
+      .services{grid-template-columns:1fr}
+      .works-grid{grid-template-columns:1fr}
+      .hero img.portrait{height:300px}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="brand"><span class="logo">YVAN NIYONSHUTI</span></a>
+      <nav class="menu">
+        <a class="active" href="#home">About</a>
+        <a href="#services">Services</a>
+        <a href="#works">Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="hero-eyebrow">Hi, I am Yvan</div>
+          <h1 class="hero-title">PRODUCT <span class="sub">DESIGNER</span></h1>
+          <p class="muted">Freelance WordPress web designer focused on clean UI, fast performance, and conversion‑driven results.</p>
+          <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+            <a class="btn primary" href="#contact">Hire Me</a>
+            <a class="btn" href="#" download>Resume</a>
+          </div>
+          <div class="swatch" aria-hidden="true">
+            <span class="s1"></span>
+            <span class="s2"></span>
+            <span class="s3"></span>
+          </div>
+        </div>
+        <div class="hero">
+          <img class="portrait" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Abstract technology background"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section>
+      <div class="about">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1200&auto=format&fit=crop" alt="Abstract design background" />
+        </div>
+        <div class="panel">
+          <h2 class="section-title">About Me</h2>
+          <p class="muted">I design and build modern, high‑performing WordPress websites for SMEs, NGOs, and travel/tour brands. My focus is accessibility, speed, and an experience that turns visitors into customers.</p>
+          <div class="meta">
+            <span class="chip">Skills</span>
+            <span class="chip">Experience</span>
+            <span class="chip">Education</span>
+          </div>
+          <ul style="margin:0; padding-left:1rem; line-height:1.9">
+            <li>Designing Web/App interfaces</li>
+            <li>Custom WordPress themes with Elementor/ACF</li>
+            <li>SEO, performance, and analytics</li>
+            <li>Frontend (HTML/CSS/JS) & Gutenberg blocks</li>
+            <li>Pay integrations & multilingual sites</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section id="services">
+      <h2 class="section-title">My Services</h2>
+      <div class="services">
+        <article class="card web">
+          <div class="icon" aria-hidden="true">💻</div>
+          <h3>Web Development</h3>
+          <p>Pixel‑perfect responsive websites in WordPress with clean markup and modern best practices.</p>
+          <a class="btn" style="margin-top:12px" href="#contact">Learn More</a>
+        </article>
+        <article class="card ui">
+          <div class="icon" aria-hidden="true">🎨</div>
+          <h3>UI/UX Designing</h3>
+          <p>Design systems, wireframes, and prototypes that balance usability with brand personality.</p>
+          <a class="btn" style="margin-top:12px" href="#works">Learn More</a>
+        </article>
+        <article class="card app">
+          <div class="icon" aria-hidden="true">📱</div>
+          <h3>App Development</h3>
+          <p>Lightweight front‑end apps and interactions to elevate WordPress experiences.</p>
+          <a class="btn" style="margin-top:12px" href="#contact">Learn More</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Works ===== -->
+    <section id="works">
+      <h2 class="section-title">My Works</h2>
+      <div class="works-grid">
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=1600&auto=format&fit=crop" alt="Monitor Investment website mockup" />
+          <figcaption class="cap"><span>Monitor Investment</span> <a href="#">View</a></figcaption>
+        </figure>
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1600&auto=format&fit=crop" alt="Triple Legacy Travels website mockup" />
+          <figcaption class="cap"><span>Triple Legacy Travels</span> <a href="#">View</a></figcaption>
+        </figure>
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?q=80&w=1600&auto=format&fit=crop" alt="Cooko/PEAL website mockup" />
+          <figcaption class="cap"><span>Cooko (PEAL)</span> <a href="#">View</a></figcaption>
+        </figure>
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="NNFR website mockup" />
+          <figcaption class="cap"><span>NNFR</span> <a href="#">View</a></figcaption>
+        </figure>
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?q=80&w=1600&auto=format&fit=crop" alt="E‑commerce UI" />
+          <figcaption class="cap"><span>E‑commerce UI</span> <a href="#">View</a></figcaption>
+        </figure>
+        <figure class="work">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="Landing page design" />
+          <figcaption class="cap"><span>Landing Page</span> <a href="#">View</a></figcaption>
+        </figure>
+      </div>
+      <div style="text-align:center; margin-top:16px">
+        <a class="btn" href="#">See More</a>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p><strong>Email</strong><br><a href="mailto:yvan@example.com">yvan@example.com</a></p>
+          <p><strong>Phone</strong><br><a href="tel:+250788000000">+250 788 000 000</a></p>
+          <p><strong>Location</strong><br>Rwanda (Remote‑friendly)</p>
+          <div class="socials" aria-label="social links">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Twitter/X">𝕏</a>
+            <a href="#" aria-label="Dribbble">🏀</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn" href="#" download>Download CV</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks, I will get back to you!');">
+            <div class="row">
+              <div><label for="name" class="sr-only">Your Name</label><input id="name" name="name" type="text" placeholder="Your Name" required></div>
+              <div><label for="email" class="sr-only">Your Email</label><input id="email" name="email" type="email" placeholder="Your Email" required></div>
+            </div>
+            <div style="margin-top:12px"><label for="message" class="sr-only">Your Message</label><textarea id="message" name="message" placeholder="Your Message"></textarea></div>
+            <div style="margin-top:12px"><button class="btn primary" type="submit">Submit</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>Designed & Developed by Yvan Niyonshuti • © <span id="y"></span></div>
+    </div>
+  </footer>
+
+  <script>
+    // year in footer
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
