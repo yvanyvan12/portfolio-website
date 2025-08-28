@@ -199,47 +199,64 @@
       </div>
     </section>
 
-    <!-- ===== Works ===== -->
-    <section id="works">
-      <h2 class="section-title">My Works</h2>
-      <div class="works-grid">
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=1600&auto=format&fit=crop" alt="Monitor Investment website mockup" />
-          <figcaption class="cap"><span>Monitor Investment</span> <a href="#">View</a></figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1600&auto=format&fit=crop" alt="Triple Legacy Travels website mockup" />
-          <figcaption class="cap"><span>Triple Legacy Travels</span> <a href="#">View</a></figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?q=80&w=1600&auto=format&fit=crop" alt="Cooko/PEAL website mockup" />
-          <figcaption class="cap"><span>Cooko (PEAL)</span> <a href="#">View</a></figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="NNFR website mockup" />
-          <figcaption class="cap"><span>NNFR</span> <a href="#">View</a></figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?q=80&w=1600&auto=format&fit=crop" alt="E‑commerce UI" />
-          <figcaption class="cap"><span>E‑commerce UI</span> <a href="#">View</a></figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="Landing page design" />
-          <figcaption class="cap"><span>Landing Page</span> <a href="#">View</a></figcaption>
-        </figure>
-      </div>
-      <div style="text-align:center; margin-top:16px">
-        <a class="btn" href="#">See More</a>
-      </div>
-    </section>
+   <!-- ===== Works ===== -->
+<section id="works">
+  <h2 class="section-title">My Works</h2>
+  
+  <div class="works-grid clean">
+    <!-- First 3 visible cards -->
+    <figure class="work-card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80" alt="Monitor Investment" />
+      <figcaption>Monitor Investment</figcaption>
+    </figure>
+    <figure class="work-card">
+      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80" alt="Triple Legacy Travels" />
+      <figcaption>Triple Legacy Travels</figcaption>
+    </figure>
+    <figure class="work-card">
+      <img src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&w=1600&q=80" alt="Cooko (PEAL)" />
+      <figcaption>Cooko (PEAL)</figcaption>
+    </figure>
+
+    <!-- Hidden cards -->
+    <figure class="work-card hidden">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80" alt="E-commerce Website" />
+      <figcaption>E-commerce Website</figcaption>
+    </figure>
+    <figure class="work-card hidden">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80" alt="Portfolio Website" />
+      <figcaption>Portfolio Website</figcaption>
+    </figure>
+    <figure class="work-card hidden">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80" alt="Blog Website" />
+      <figcaption>Blog Website</figcaption>
+    </figure>
+  </div>
+
+  <div style="text-align:center; margin-top:24px">
+    <button id="seeMoreBtn" class="btn primary">SEE MORE</button>
+  </div>
+</section>
+
+<!-- ===== Script ===== -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("seeMoreBtn");
+    btn.addEventListener("click", function () {
+      const hiddenCards = document.querySelectorAll(".work-card.hidden");
+      hiddenCards.forEach(card => card.classList.remove("hidden"));
+      btn.style.display = "none"; // hide button after reveal
+    });
+  });
+</script>
 
     <!-- ===== Contact ===== -->
     <section id="contact">
       <h2 class="section-title">Contact Me</h2>
       <div class="contact-grid">
         <div class="contact-item">
-          <p><strong>Email</strong><br><a href="mailto:yvan@example.com">yvan@example.com</a></p>
-          <p><strong>Phone</strong><br><a href="tel:+250788000000">+250 788 000 000</a></p>
+          <p><strong>Email</strong><br><a href="mailto:yvan@example.com">yvanyvan0788@gmail.com.com</a></p>
+          <p><strong>Phone</strong><br><a href="tel:+250788000000">+250 784 996 990</a></p>
           <p><strong>Location</strong><br>Rwanda (Remote‑friendly)</p>
           <div class="socials" aria-label="social links">
             <a href="#" aria-label="Instagram">📸</a>
